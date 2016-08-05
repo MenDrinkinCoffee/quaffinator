@@ -63,15 +63,15 @@ namespace quaffinator
             for (var i = 0; i <= 15; i++)
                 try
                 {
-                    var fileExists = File.Exists($"{i + 1}.txt");
+                    var fileExists = File.Exists(string.Format("{0}.txt", i + 1));
                     if (fileExists)
                     {
-                        _players.Add(File.ReadLines($"{i + 1}.txt").ToArray());
+                        _players.Add(File.ReadLines(string.Format("{0}.txt", i + 1)).ToArray());
                     }
                     else
                     {
                         var player = new string[8];
-                        player[0] = $"Player {i + 1}";
+                        player[0] = string.Format("Player {0}", i + 1);
                         player[1] = "0";
                         player[2] = "0";
                         player[3] = "0";
@@ -79,7 +79,7 @@ namespace quaffinator
                         player[5] = "0";
                         player[6] = "0";
                         player[7] = "default_logo.png";
-                        File.WriteAllLines($"{i + 1}.txt", player);
+                        File.WriteAllLines(string.Format("{0}.txt", i + 1), player);
                         _players.Add(player);
                     }
                 }
